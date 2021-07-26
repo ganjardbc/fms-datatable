@@ -1,0 +1,82 @@
+.changeScrollbar {
+    scroll-behavior: smooth; 
+}
+.changeScrollbar::scrollbar {
+    width: 0;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0); 
+}
+.changeScrollbar::scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 1ex;
+    border-radius: 1ex; 
+}
+.changeScrollbar::scrollbar-corner {
+    background-color: #fff; 
+}
+.changeScrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0); 
+}
+.changeScrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+    -webkit-border-radius: 1ex;
+    border-radius: 1ex; 
+}
+.changeScrollbar::-webkit-scrollbar-corner {
+    background-color: #fff; 
+}
+.changeScrollbar::-moz-scrollbar {
+    width: 0;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.changeScrollbar::-moz-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0);
+    -moz-border-radius: 1ex;
+    border-radius: 1ex; 
+}
+.changeScrollbar::-moz-scrollbar-corner {
+    background-color: #fff; 
+}
+.changeScrollbar:hover::scrollbar {
+    width: 10px; 
+}
+.changeScrollbar:hover::-webkit-scrollbar {
+    width: 10px; 
+}
+.changeScrollbar:hover::-moz-scrollbar {
+    width: 10px;
+}
+.changeScrollbar:hover::scrollbar-thumb {
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+    background-color: rgba(0, 0, 0, 0.14);
+    width: 10px;
+}
+.changeScrollbar:hover::-webkit-scrollbar-thumb {
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+    background-color: rgba(0, 0, 0, 0.14);
+    width: 10px; 
+}
+.changeScrollbar:hover::-moz-scrollbar-thumb {
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+    background-color: rgba(0, 0, 0, 0.14);
+    width: 10px;
+}
+
+.noBorder * {
+    border: 0 #fff solid;
+}
