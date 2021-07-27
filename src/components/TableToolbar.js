@@ -46,7 +46,7 @@ export const defaultToolbarStyles = theme => ({
     backgroundColor: '#fff',
     '&:hover': {
       color: theme.palette.primary.main,
-      backgroundColor: 'rgba(0,0,0,0.1)'
+      backgroundColor: 'rgba(0,0,0,0.1)',
     },
   },
   iconActive: {
