@@ -19,7 +19,6 @@ import UploadIcon from '@material-ui/icons/CloudUpload';
 import AddIcon from '@material-ui/icons/Add';
 import ViewColumnIcon from '@material-ui/icons/ViewColumn';
 import FilterIcon from '@material-ui/icons/FilterList';
-import ReactToPrint from 'react-to-print';
 import { withStyles } from '@material-ui/core/styles';
 import { createCSVDownload } from '../utils';
 
@@ -44,8 +43,10 @@ export const defaultToolbarStyles = theme => ({
     padding: '8px 12px',
     maxHeight: 36,
     borderRadius: 4,
+    backgroundColor: '#fff',
     '&:hover': {
       color: theme.palette.primary.main,
+      backgroundColor: 'rgba(0,0,0,0.1)'
     },
   },
   iconActive: {
