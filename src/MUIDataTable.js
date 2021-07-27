@@ -1417,15 +1417,12 @@ class MUIDataTable extends React.Component {
             buttonDownload={buttonDownload ? buttonDownload : false}
           />
         )}
-        
+
         {toolbarRender && (
-          <div style={{ padding: "12px 0", borderBottom: '1px solid rgba(224, 224, 224, 1)' }}>
-            { toolbarRender }
-          </div>
+          <div style={{ padding: '12px 0', borderBottom: '1px solid rgba(224, 224, 224, 1)' }}>{toolbarRender}</div>
         )}
 
-        <div
-          style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             {selectedRows.data.length && this.options.disableToolbarSelect !== true ? (
               <TableToolbarSelect
@@ -1436,11 +1433,9 @@ class MUIDataTable extends React.Component {
                 selectRowUpdate={this.selectRowUpdate}
               />
             ) : (
-              <div style={{paddingRight: 15}}>
+              <div style={{ paddingRight: 15 }}>
                 {this.options.disableToolbarSelect !== true && (
-                  <Typography variant="body1">
-                    0 row(s) selected
-                  </Typography>
+                  <Typography variant="body1">0 row(s) selected</Typography>
                 )}
               </div>
             )}
@@ -1457,7 +1452,7 @@ class MUIDataTable extends React.Component {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <TableToolbarButton 
+            <TableToolbarButton
               columns={columns}
               displayData={displayData}
               data={data}

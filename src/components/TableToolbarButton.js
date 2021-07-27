@@ -235,17 +235,9 @@ class TableToolbarButton extends React.Component {
   };
 
   render() {
-    const {
-      options,
-      classes,
-    } = this.props;
+    const { options, classes } = this.props;
 
-    const {
-      print,
-      download,
-      downloadCsv,
-      upload
-    } = options.textLabels.toolbar;
+    const { print, download, downloadCsv, upload } = options.textLabels.toolbar;
 
     return (
       <Toolbar
