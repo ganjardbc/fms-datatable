@@ -74,7 +74,7 @@ const defaultTableStyles = theme => ({
     boxShadow: '0 0 0 #fff',
     borderRadius: '5px',
     border: '1px solid rgba(224, 224, 224, 1)',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   tableRoot: {
     outline: 'none',
@@ -1387,41 +1387,42 @@ class MUIDataTable extends React.Component {
     return (
       <div>
         {showToolbar && (
-            <TableToolbar
-              columns={columns}
-              displayData={displayData}
-              data={data}
-              filterData={filterData}
-              filterList={filterList}
-              filterUpdate={this.filterUpdate}
-              options={this.options}
-              resetFilters={this.resetFilters}
-              searchText={searchText}
-              searchTextUpdate={this.searchTextUpdate}
-              tableRef={this.getTableContentRef}
-              title={title}
-              subtitle={subtitle}
-              circularProgress={circularProgress}
-              toolbarRender={toolbarRender}
-              toggleViewColumn={this.toggleViewColumn}
-              setTableAction={this.setTableAction}
-              onSearch={onSearch ? onSearch : () => {}}
-              onUpload={onUpload ? onUpload : () => {}}
-              onCreate={onCreate ? onCreate : () => {}}
-              onPrint={onPrint ? onPrint : () => {}}
-              onPrint={onPrint ? onPrint : () => {}}
-              onDownload={onDownload ? onDownload : () => {}}
-              buttonReactiveSearch={buttonReactiveSearch ? buttonReactiveSearch : false}
-              buttonSearch={buttonSearch ? buttonSearch : false}
-              buttonUpload={buttonUpload ? buttonUpload : false}
-              buttonCreate={buttonCreate ? buttonCreate : false}
-              buttonPrint={buttonPrint ? buttonPrint : false}
-              buttonDownload={buttonDownload ? buttonDownload : false}
-            />
+          <TableToolbar
+            columns={columns}
+            displayData={displayData}
+            data={data}
+            filterData={filterData}
+            filterList={filterList}
+            filterUpdate={this.filterUpdate}
+            options={this.options}
+            resetFilters={this.resetFilters}
+            searchText={searchText}
+            searchTextUpdate={this.searchTextUpdate}
+            tableRef={this.getTableContentRef}
+            title={title}
+            subtitle={subtitle}
+            circularProgress={circularProgress}
+            toolbarRender={toolbarRender}
+            toggleViewColumn={this.toggleViewColumn}
+            setTableAction={this.setTableAction}
+            onSearch={onSearch ? onSearch : () => {}}
+            onUpload={onUpload ? onUpload : () => {}}
+            onCreate={onCreate ? onCreate : () => {}}
+            onPrint={onPrint ? onPrint : () => {}}
+            onPrint={onPrint ? onPrint : () => {}}
+            onDownload={onDownload ? onDownload : () => {}}
+            buttonReactiveSearch={buttonReactiveSearch ? buttonReactiveSearch : false}
+            buttonSearch={buttonSearch ? buttonSearch : false}
+            buttonUpload={buttonUpload ? buttonUpload : false}
+            buttonCreate={buttonCreate ? buttonCreate : false}
+            buttonPrint={buttonPrint ? buttonPrint : false}
+            buttonDownload={buttonDownload ? buttonDownload : false}
+          />
         )}
-        
-        <div style={{display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgba(224, 224, 224, 1)'}}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
+
+        <div
+          style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgba(224, 224, 224, 1)' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             {selectedRows.data.length && this.options.disableToolbarSelect !== true ? (
               <TableToolbarSelect
                 options={this.options}
@@ -1454,16 +1455,17 @@ class MUIDataTable extends React.Component {
             changePage={this.changePage}
           />
         </div>
-        
+
         {toolbarRender && toolbarRender}
 
         <Paper
           elevation={this.options.elevation}
           ref={this.tableContent}
           className={classnames(classes.paper, className)}
-          style={{borderRadius: 5, boxShadow: '0 0 0 0 #fff'}}>
-
-          {linearProgress && <ColorLinearProgress variant="query" className={classes.margin} style={{ height: '3px' }} />}
+          style={{ borderRadius: 5, boxShadow: '0 0 0 0 #fff' }}>
+          {linearProgress && (
+            <ColorLinearProgress variant="query" className={classes.margin} style={{ height: '3px' }} />
+          )}
 
           <div style={{ position: 'relative' }} className={responsiveClass}>
             {this.options.resizableColumns && (
@@ -1505,8 +1507,8 @@ class MUIDataTable extends React.Component {
                 options={this.options}
                 filterList={filterList}
               />
-              
-              <div style={{width: '100%', height: 20}} />
+
+              <div style={{ width: '100%', height: 20 }} />
             </MuiTable>
           </div>
           <div className={classes.liveAnnounce} aria-live={'polite'}>

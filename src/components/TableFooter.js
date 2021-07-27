@@ -14,7 +14,7 @@ class TableFooter extends React.Component {
     const { options, rowCount, page, rowsPerPage, changeRowsPerPage, changePage } = this.props;
 
     return (
-      <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         {options.customFooter
           ? options.customFooter(
               rowCount,

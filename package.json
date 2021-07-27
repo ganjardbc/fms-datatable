@@ -1,6 +1,6 @@
 {
-  "name": "mui-datatables-bitozen",
-  "version": "4.0.17",
+  "name": "mui-datatables-fms",
+  "version": "1.0.0",
   "description": "Datatables for React using Material-UI",
   "main": "dist/index.js",
   "files": [

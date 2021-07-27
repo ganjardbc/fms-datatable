@@ -77,16 +77,16 @@ class TablePagination extends React.Component {
               'data-testid': 'pagination-back',
               'aria-label': textLabels.previous,
               classes: {
-                root: classes.icon
-              }
+                root: classes.icon,
+              },
             }}
             nextIconButtonProps={{
               id: 'pagination-next',
               'data-testid': 'pagination-next',
               'aria-label': textLabels.next,
               classes: {
-                root: classes.icon
-              }
+                root: classes.icon,
+              },
             }}
             SelectProps={{
               id: 'pagination-input',

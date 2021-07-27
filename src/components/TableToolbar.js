@@ -31,7 +31,7 @@ export const defaultToolbarStyles = theme => ({
   left: {
     flex: '0.2 1 auto',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   actions: {
     flex: '1 1 auto',
@@ -45,7 +45,7 @@ export const defaultToolbarStyles = theme => ({
     maxHeight: 36,
     borderRadius: 4,
     '&:hover': {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
   },
   iconActive: {
@@ -292,9 +292,13 @@ class TableToolbar extends React.Component {
     var searchPosition = 120;
 
     return (
-      <Toolbar className={classes.root} style={{paddingLeft: '0', paddingRight: '0', borderBottom: '0'}} role={'toolbar'} aria-label={'Table Toolbar'}>
+      <Toolbar
+        className={classes.root}
+        style={{ paddingLeft: '0', paddingRight: '0', borderBottom: '0' }}
+        role={'toolbar'}
+        aria-label={'Table Toolbar'}>
         <div className={classes.left}>
-          <div style={{marginRight: 10}}>
+          <div style={{ marginRight: 10 }}>
             <TableSearch
               buttonSearch={this.props.buttonSearch}
               onClickSearch={data => this.handleClickSearch(data)}
@@ -316,7 +320,9 @@ class TableToolbar extends React.Component {
                     classes={{ root: this.getActiveIcon(classes, 'viewcolumns') }}
                     style={{ border: '1px solid rgba(224, 224, 224, 1)', marginRight: 10 }}
                     onClick={this.setActiveIcon.bind(null, 'viewcolumns')}>
-                    <Typography variant="subtitle2" style={{marginRight: 8}}>COLUMNS</Typography>
+                    <Typography variant="subtitle2" style={{ marginRight: 8 }}>
+                      COLUMNS
+                    </Typography>
                     <ViewColumnIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
@@ -339,7 +345,9 @@ class TableToolbar extends React.Component {
                     classes={{ root: this.getActiveIcon(classes, 'filter') }}
                     style={{ border: '1px solid rgba(224, 224, 224, 1)', marginRight: 10 }}
                     onClick={this.setActiveIcon.bind(null, 'filter')}>
-                    <Typography variant="subtitle2" style={{marginRight: 8}}>FILTER</Typography>
+                    <Typography variant="subtitle2" style={{ marginRight: 8 }}>
+                      FILTER
+                    </Typography>
                     <FilterIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
@@ -370,7 +378,6 @@ class TableToolbar extends React.Component {
         {circularProgress && <ColorCircularProgress size={24} />}
 
         <div className={classes.actions}>
-
           {options.download && (
             <Tooltip title={downloadCsv}>
               <IconButton
@@ -451,10 +458,10 @@ class TableToolbar extends React.Component {
           )}
 
           {this.props.buttonCreate && (
-            <span style={{marginLeft: 10}}>
+            <span style={{ marginLeft: 10 }}>
               <Tooltip title={create}>
                 <Button variant="contained" size="medium" color="primary" onClick={this.handleCreate}>
-                  <span style={{marginRight: 5}}>Create</span> <AddIcon fontSize="small" />
+                  <span style={{ marginRight: 5 }}>Create</span> <AddIcon fontSize="small" />
                 </Button>
               </Tooltip>
             </span>

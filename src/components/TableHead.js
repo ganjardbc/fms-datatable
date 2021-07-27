@@ -25,7 +25,7 @@ const defaultHeadStyles = theme => ({
     padding: '4px 56px 4px 24px',
     textAlign: 'right',
     verticalAlign: 'inherit',
-    borderBottom: '1px solid rgba(224, 224, 224, 1)'
+    borderBottom: '1px solid rgba(224, 224, 224, 1)',
   },
   noBorder: {
     width: '100%',

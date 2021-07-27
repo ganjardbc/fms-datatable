@@ -14,7 +14,7 @@ const defaultSearchStyles = theme => ({
     maxHeight: 34,
     backgroundColor: '#fff',
     borderRadius: 3,
-    paddingLeft: 10
+    paddingLeft: 10,
   },
   searchIcon: {
     color: theme.palette.text.secondary,
@@ -24,7 +24,7 @@ const defaultSearchStyles = theme => ({
   searchText: {
     flex: '1 0',
     borderBottom: '0 #fff solid',
-    color: 'rgba(0, 0, 0, 0.87)'
+    color: 'rgba(0, 0, 0, 0.87)',
   },
   clearIcon: {
     '&:hover': {
@@ -75,7 +75,7 @@ class TableSearch extends React.Component {
               InputProps={{
                 'data-test-id': options.textLabels.toolbar.search,
                 'aria-label': options.textLabels.toolbar.search,
-                disableUnderline: true
+                disableUnderline: true,
               }}
               value={searchText || ''}
               onChange={this.handleTextChange}
@@ -88,9 +88,11 @@ class TableSearch extends React.Component {
                 <ClearIcon fontSize="small" />
               </IconButton>
             ) : (
-              <IconButton className={classes.icon} onClick={() => {
-                searchText ? onClickSearch(searchText) : this.searchField.focus();
-              }}>
+              <IconButton
+                className={classes.icon}
+                onClick={() => {
+                  searchText ? onClickSearch(searchText) : this.searchField.focus();
+                }}>
                 <SearchIcon fontSize="small" />
               </IconButton>
             )}
@@ -105,7 +107,7 @@ class TableSearch extends React.Component {
               InputProps={{
                 'data-test-id': options.textLabels.toolbar.search,
                 'aria-label': options.textLabels.toolbar.search,
-                disableUnderline: true
+                disableUnderline: true,
               }}
               value={searchText || ''}
               onChange={this.handleTextChange}
