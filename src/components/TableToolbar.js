@@ -54,6 +54,7 @@ export const defaultToolbarStyles = theme => ({
     maxHeight: 36,
     borderRadius: 4,
     color: theme.palette.primary.main,
+    backgroundColor: '#fff',
   },
   filterPaper: {
     maxWidth: '50%',
