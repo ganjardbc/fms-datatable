@@ -1,24 +1,12 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import Popover from './Popover';
-import TableFilter from './TableFilter';
-import TableViewCol from './TableViewCol';
-import TableSearch from './TableSearch';
-// import SearchIcon from '@material-ui/icons/Search';
-import CircularProgress from '@material-ui/core/CircularProgress';
-// import LinearProgress from '@material-ui/core/LinearProgress';
-import Button from '@material-ui/core/Button';
 
 // BorderLinearProgress
 import DownloadIcon from '@material-ui/icons/CloudDownload';
 import PrintIcon from '@material-ui/icons/Print';
 import UploadIcon from '@material-ui/icons/CloudUpload';
-import AddIcon from '@material-ui/icons/Add';
-import ViewColumnIcon from '@material-ui/icons/ViewColumn';
-import FilterIcon from '@material-ui/icons/FilterList';
 import ReactToPrint from 'react-to-print';
 import { withStyles } from '@material-ui/core/styles';
 import { createCSVDownload } from '../utils';
@@ -104,25 +92,11 @@ export const defaultToolbarStyles = theme => ({
   '@media screen and (max-width: 480px)': {},
 });
 
-const ColorCircularProgress = withStyles({
-  root: {
-    color: '#2B9133',
-  },
-})(CircularProgress);
-
-class TableToolbar extends React.Component {
+class TableToolbarButton extends React.Component {
   state = {
     iconActive: null,
-    showSearch: Boolean(this.props.searchText || this.props.options.searchText || this.props.options.searchOpen),
-    searchText: this.props.searchText || null,
     searchPosition: 120,
   };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.searchText !== prevProps.searchText) {
-      this.setState({ searchText: this.props.searchText });
-    }
-  }
 
   handleUpload = () => {
     this.props.onUpload();
@@ -262,136 +236,106 @@ class TableToolbar extends React.Component {
 
   render() {
     const {
-      data,
       options,
       classes,
-      columns,
-      filterData,
-      filterList,
-      filterUpdate,
-      resetFilters,
-      toggleViewColumn,
-      title,
-      subtitle,
-      tableRef,
-      filterListRenderers,
-      circularProgress,
     } = this.props;
 
     const {
-      search,
       print,
       download,
       downloadCsv,
-      create,
-      upload,
-      viewColumns,
-      filterTable,
+      upload
     } = options.textLabels.toolbar;
-    const { showSearch, searchText } = this.state;
-    var searchPosition = 120;
 
     return (
       <Toolbar
         className={classes.root}
-        style={{ paddingLeft: '0', paddingRight: '0', borderBottom: '1px solid rgba(224, 224, 224, 1)' }}
+        style={{ paddingLeft: '0', paddingRight: '0', borderBottom: '0' }}
         role={'toolbar'}
         aria-label={'Table Toolbar'}>
-        <div className={classes.left}>
-          <div style={{ marginRight: 10 }}>
-            <TableSearch
-              buttonSearch={this.props.buttonSearch}
-              onClickSearch={data => this.handleClickSearch(data)}
-              searchText={searchText}
-              onSearch={this.handleSearch}
-              onHide={this.hideSearch}
-              options={options}
-            />
-          </div>
-
-          {options.viewColumns && (
-            <Popover
-              refExit={this.setActiveIcon.bind(null)}
-              trigger={
-                <Tooltip title={viewColumns} disableFocusListener>
-                  <IconButton
-                    data-testid={viewColumns + '-iconButton'}
-                    aria-label={viewColumns}
-                    classes={{ root: this.getActiveIcon(classes, 'viewcolumns') }}
-                    style={{ border: '1px solid rgba(224, 224, 224, 1)', marginRight: 10 }}
-                    onClick={this.setActiveIcon.bind(null, 'viewcolumns')}>
-                    <Typography variant="subtitle2" style={{ marginRight: 8 }}>
-                      COLUMNS
-                    </Typography>
-                    <ViewColumnIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-              }
-              content={
-                <TableViewCol data={data} columns={columns} options={options} onColumnUpdate={toggleViewColumn} />
-              }
-            />
-          )}
-
-          {options.filter && (
-            <Popover
-              refExit={this.setActiveIcon.bind(null)}
-              classes={{ paper: classes.filterPaper }}
-              trigger={
-                <Tooltip title={filterTable} disableFocusListener>
-                  <IconButton
-                    data-testid={filterTable + '-iconButton'}
-                    aria-label={filterTable}
-                    classes={{ root: this.getActiveIcon(classes, 'filter') }}
-                    style={{ border: '1px solid rgba(224, 224, 224, 1)', marginRight: 10 }}
-                    onClick={this.setActiveIcon.bind(null, 'filter')}>
-                    <Typography variant="subtitle2" style={{ marginRight: 8 }}>
-                      FILTER
-                    </Typography>
-                    <FilterIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-              }
-              content={
-                <TableFilter
-                  customFooter={options.customFilterDialogFooter}
-                  columns={columns}
-                  options={options}
-                  filterList={filterList}
-                  filterData={filterData}
-                  onFilterUpdate={filterUpdate}
-                  onFilterReset={resetFilters}
-                />
-              }
-            />
-          )}
-
-          {/* <div>
-            <Button size="medium" onClick={() => resetFilters()}>
-              Reset 
-            </Button>
-          </div>
-
-          <Typography variant="subtitle2" style={{marginRight: 8}}>0 filters applied</Typography> */}
-        </div>
-
-        {circularProgress && <ColorCircularProgress size={24} />}
-
         <div className={classes.actions}>
-          {this.props.buttonCreate && (
-            <span style={{ marginLeft: 10 }}>
-              <Tooltip title={create}>
-                <Button variant="contained" size="medium" color="primary" onClick={this.handleCreate}>
-                  <span style={{ marginRight: 5 }}>Create</span> <AddIcon fontSize="small" />
-                </Button>
+          {options.download && (
+            <Tooltip title={downloadCsv}>
+              <IconButton
+                size="small"
+                data-testid={downloadCsv + '-iconButton'}
+                aria-label={downloadCsv}
+                classes={{ root: classes.icon }}
+                onClick={this.handleCSVDownload}>
+                <DownloadIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          )}
+
+          {options.print && (
+            <span>
+              <ReactToPrint
+                trigger={() => (
+                  <span>
+                    <Tooltip title={print}>
+                      <IconButton
+                        size="small"
+                        data-testid={print + '-iconButton'}
+                        aria-label={print}
+                        classes={{ root: classes.icon }}>
+                        <PrintIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                  </span>
+                )}
+                content={() => this.props.tableRef()}
+              />
+            </span>
+          )}
+
+          {this.props.buttonPrint && (
+            <span>
+              <Tooltip title={print}>
+                <IconButton
+                  size="small"
+                  data-testid={print + '-iconButton'}
+                  aria-label={print}
+                  classes={{ root: classes.icon }}
+                  onClick={this.handlePrint}>
+                  <PrintIcon fontSize="small" />
+                </IconButton>
               </Tooltip>
             </span>
           )}
-          {options.customToolbar && options.customToolbar()}
+
+          {this.props.buttonUpload && (
+            <span>
+              <Tooltip title={upload}>
+                <IconButton
+                  size="small"
+                  data-testid={upload + '-iconButton'}
+                  aria-label={upload}
+                  classes={{ root: classes.icon }}
+                  onClick={this.handleUpload}>
+                  <UploadIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </span>
+          )}
+
+          {this.props.buttonDownload && (
+            <span>
+              <Tooltip title={download}>
+                <IconButton
+                  size="small"
+                  data-testid={download + '-iconButton'}
+                  aria-label={download}
+                  classes={{ root: classes.icon }}
+                  onClick={this.handleDownload}>
+                  <DownloadIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </span>
+          )}
         </div>
       </Toolbar>
     );
   }
 }
 
-export default withStyles(defaultToolbarStyles, { name: 'MUIDataTableToolbar' })(TableToolbar);
+export default withStyles(defaultToolbarStyles, { name: 'MUIDataTableToolbarButton' })(TableToolbarButton);

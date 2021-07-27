@@ -148,7 +148,7 @@ class Example extends React.Component {
       responsive: 'scrollMaxHeight',
       selectableRows: 'multiple',
       // rowsSelected: [0, 3],
-      // disableToolbarSelect: true,
+      disableToolbarSelect: false,
       onRowsSelect: (rowData) => {
         // this.setState({isSelectedActive: true});
       }
@@ -156,11 +156,6 @@ class Example extends React.Component {
 
     return (
       <div>
-        {/* <button 
-            className="btn btn-grey btn-small-circle"
-            onClick={ () => this.setState({isSelectedActive: false}) }>
-            uncheck all
-        </button> */}
         <MUIDataTable 
           title={"ACME Employee list"} 
           subtitle={"All data is set"} 
@@ -170,7 +165,7 @@ class Example extends React.Component {
           isSelectedActive={this.state.isSelectedActive}
           circularProgress={false}
           linearProgress={false}
-          // toolbarRender={<div style={{padding: "10px 24px", width: "calc(100% - 48px)"}}>Toolbar Render Component</div>}
+          toolbarRender={<div style={{width: "100%"}}>Toolbar Render Component</div>}
           buttonReactiveSearch={true}
           buttonSearch={true}
           onSearch={(data) => {
