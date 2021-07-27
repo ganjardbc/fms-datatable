@@ -65,7 +65,7 @@ class TableSearch extends React.Component {
     const { classes, options, onHide, searchText, onClickSearch, buttonSearch } = this.props;
 
     return (
-      <Grow appear in={true} timeout={300}>
+      <Grow appear in={true} timeout={0}>
         {buttonSearch ? (
           <div className={classes.main} ref={el => (this.rootRef = el)}>
             <TextField
